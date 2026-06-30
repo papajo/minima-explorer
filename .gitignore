@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 dist/
+*.tsbuildinfo
 
 # Local environment files
 .env
@@ -19,5 +20,8 @@ pnpm-debug.log*
 .DS_Store
 .vscode/
 
-# Local Pi runtime state
+# Local planning / agent state
 .atl/
+task_plan.md
+findings.md
+progress.md

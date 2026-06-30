@@ -63,6 +63,9 @@ npm run preview
 - `npm run build` — create a production build
 - `npm run preview` — preview the production build locally
 - `npm run typecheck` — run TypeScript project checks
+- `npm run lint` — run ESLint across the repo
+- `npm run test` — start Vitest in watch mode
+- `npm run test:run` — run the test suite once
 
 ## Project Structure
 
@@ -84,6 +87,29 @@ src/
     Phase4Optimize.tsx
 ```
 
+## Quality Standards
+
+Before opening a PR, run:
+
+```bash
+npm run lint
+npm run typecheck
+npm run test:run
+npm run build
+```
+
+A GitHub Actions workflow is included to run the same checks in CI.
+
+## Contributing
+
+- See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for local setup and contribution guidance.
+- Bug reports and feature requests can use the GitHub issue templates.
+- Pull requests can use the included PR template.
+
+## License
+
+This repository is licensed under the [Apache License 2.0](./LICENSE).
+
 ## Notes
 
 - The app name and metadata are aligned to `minima-explorer`.
@@ -92,7 +118,7 @@ src/
 
 ## Next Improvements
 
-- Add linting and formatting scripts
-- Add component-level tests
-- Move large static content blocks into dedicated data modules
 - Add screenshots or a short walkthrough GIF
+- Move large static content blocks into dedicated data modules
+- Expand test coverage beyond the app shell and tab navigation
+- Add formatting automation to complement linting

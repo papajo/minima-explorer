@@ -24,6 +24,9 @@ const tabs: { id: Tab; label: string }[] = [
   { id: "phase4", label: "Phase 4: Optimize" },
 ];
 
+const getTabId = (id: Tab) => `tab-${id}`;
+const getPanelId = (id: Tab) => `panel-${id}`;
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>("architecture");
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
@@ -50,10 +53,16 @@ export default function App() {
               <span className="badge badge-e2ee">E2EE</span>
             </div>
           </div>
-          <nav className="tabs">
+          <nav className="tabs" role="tablist" aria-label="Explorer sections">
             {tabs.map((t) => (
               <button
                 key={t.id}
+                id={getTabId(t.id)}
+                role="tab"
+                type="button"
+                aria-selected={activeTab === t.id}
+                aria-controls={getPanelId(t.id)}
+                tabIndex={activeTab === t.id ? 0 : -1}
                 className={`tab ${activeTab === t.id ? "active" : ""}`}
                 onClick={() => {
                   setActiveTab(t.id);
@@ -68,20 +77,54 @@ export default function App() {
       </header>
 
       <main className="main">
-        {activeTab === "architecture" && <ArchDiagram />}
-        {activeTab === "scaffold" && (
-          <div className="scaffold-layout">
-            <FileTree onSelect={setSelectedFile} selected={selectedFile} />
-            <CodePreview filePath={selectedFile} />
-          </div>
+        {activeTab === "architecture" && (
+          <section role="tabpanel" id={getPanelId("architecture")} aria-labelledby={getTabId("architecture")}>
+            <ArchDiagram />
+          </section>
         )}
-        {activeTab === "modes" && <ModeExplorer />}
-        {activeTab === "roadmap" && <Roadmap />}
-        {activeTab === "size" && <SizeBudget />}
-        {activeTab === "phase1" && <Phase1Xmpp />}
-        {activeTab === "phase2" && <Phase2P2P />}
-        {activeTab === "phase3" && <Phase3Matrix />}
-        {activeTab === "phase4" && <Phase4Optimize />}
+        {activeTab === "scaffold" && (
+          <section role="tabpanel" id={getPanelId("scaffold")} aria-labelledby={getTabId("scaffold")}>
+            <div className="scaffold-layout">
+              <FileTree onSelect={setSelectedFile} selected={selectedFile} />
+              <CodePreview filePath={selectedFile} />
+            </div>
+          </section>
+        )}
+        {activeTab === "modes" && (
+          <section role="tabpanel" id={getPanelId("modes")} aria-labelledby={getTabId("modes")}>
+            <ModeExplorer />
+          </section>
+        )}
+        {activeTab === "roadmap" && (
+          <section role="tabpanel" id={getPanelId("roadmap")} aria-labelledby={getTabId("roadmap")}>
+            <Roadmap />
+          </section>
+        )}
+        {activeTab === "size" && (
+          <section role="tabpanel" id={getPanelId("size")} aria-labelledby={getTabId("size")}>
+            <SizeBudget />
+          </section>
+        )}
+        {activeTab === "phase1" && (
+          <section role="tabpanel" id={getPanelId("phase1")} aria-labelledby={getTabId("phase1")}>
+            <Phase1Xmpp />
+          </section>
+        )}
+        {activeTab === "phase2" && (
+          <section role="tabpanel" id={getPanelId("phase2")} aria-labelledby={getTabId("phase2")}>
+            <Phase2P2P />
+          </section>
+        )}
+        {activeTab === "phase3" && (
+          <section role="tabpanel" id={getPanelId("phase3")} aria-labelledby={getTabId("phase3")}>
+            <Phase3Matrix />
+          </section>
+        )}
+        {activeTab === "phase4" && (
+          <section role="tabpanel" id={getPanelId("phase4")} aria-labelledby={getTabId("phase4")}>
+            <Phase4Optimize />
+          </section>
+        )}
       </main>
     </div>
   );
