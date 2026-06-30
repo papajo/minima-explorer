@@ -1,5 +1,9 @@
 # minima-explorer
 
+[![CI](https://github.com/papajo/minima-explorer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/papajo/minima-explorer/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/papajo/minima-explorer/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/papajo/minima-explorer/actions/workflows/pages.yml)
+[![Live Demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f?logo=github)](https://papajo.github.io/minima-explorer/)
+
 An interactive React + Vite explorer for the **Minima** project concept — a high-assurance, privacy-focused messaging system designed for constrained environments.
 
 This app is a technical walkthrough of the proposed system architecture, protocol modes, implementation phases, and example project scaffold. It is **not** the Rust messaging engine itself; it is the companion frontend for exploring and presenting that design.
