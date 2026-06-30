@@ -75,7 +75,9 @@ export function ArchDiagram() {
             <button
               className={`arch-layer ${expanded === layer.id ? "expanded" : ""}`}
               style={{ "--layer-color": layer.color } as React.CSSProperties}
-              onClick={() => setExpanded(expanded === layer.id ? null : layer.id)}
+              onClick={() =>
+                setExpanded(expanded === layer.id ? null : layer.id)
+              }
             >
               <div className="layer-marker">
                 <span className="layer-index">{i + 1}</span>
@@ -85,12 +87,26 @@ export function ArchDiagram() {
                 <div className="layer-subtitle">{layer.subtitle}</div>
               </div>
               <div className="layer-desc">{layer.desc}</div>
-              <svg className="chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M6 8L10 12L14 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <svg
+                className="chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M6 8L10 12L14 8"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
             {expanded === layer.id && (
-              <div className="layer-details" style={{ borderColor: layer.color }}>
+              <div
+                className="layer-details"
+                style={{ borderColor: layer.color }}
+              >
                 <ul>
                   {layer.details.map((d) => (
                     <li key={d}>{d}</li>
@@ -101,7 +117,13 @@ export function ArchDiagram() {
             {i < layers.length - 1 && (
               <div className="arch-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 5V19M12 19L6 13M12 19L18 13" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M12 5V19M12 19L6 13M12 19L18 13"
+                    stroke="rgba(255,255,255,0.25)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
             )}

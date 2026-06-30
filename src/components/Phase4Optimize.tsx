@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-type Step = "overview" | "cargo-bloat" | "profile" | "stripping" | "config" | "cross-compile" | "audit";
+type Step =
+  | "overview"
+  | "cargo-bloat"
+  | "profile"
+  | "stripping"
+  | "config"
+  | "cross-compile"
+  | "audit";
 
 const steps: { id: Step; label: string; num: number }[] = [
   { id: "overview", label: "Overview", num: 0 },
@@ -12,11 +19,14 @@ const steps: { id: Step; label: string; num: number }[] = [
   { id: "audit", label: "Final Audit", num: 6 },
 ];
 
-const stepContent: Record<Step, {
-  title: string;
-  desc: string;
-  sections: { heading: string; body: string; code?: string }[];
-}> = {
+const stepContent: Record<
+  Step,
+  {
+    title: string;
+    desc: string;
+    sections: { heading: string; body: string; code?: string }[];
+  }
+> = {
   overview: {
     title: "Phase 4: Optimization & Final Polish",
     desc: "The final pass to guarantee every build ships under 10MB. This covers release profile tuning, dependency auditing with cargo-bloat, binary stripping, cross-compilation for all target architectures, and configuration path handling across Linux and macOS.",
@@ -1101,11 +1111,14 @@ export function Phase4Optimize() {
   return (
     <section className="phase1-section">
       <div className="phase1-header">
-        <div className="phase1-badge" style={{ background: "#f59e0b" }}>Phase 4</div>
+        <div className="phase1-badge" style={{ background: "#f59e0b" }}>
+          Phase 4
+        </div>
         <div>
           <h2>Optimization & Final Polish</h2>
           <p className="phase1-tagline">
-            Binary size analysis, release profiling, cross-compilation, security audit, and the go/no-go release checklist
+            Binary size analysis, release profiling, cross-compilation, security
+            audit, and the go/no-go release checklist
           </p>
         </div>
       </div>
@@ -1135,7 +1148,9 @@ export function Phase4Optimize() {
               <h4>{section.heading}</h4>
               <p className="phase1-body">{section.body}</p>
               {section.code && (
-                <pre className="code-block"><code>{section.code}</code></pre>
+                <pre className="code-block">
+                  <code>{section.code}</code>
+                </pre>
               )}
             </div>
           ))}
@@ -1147,17 +1162,44 @@ export function Phase4Optimize() {
         <div className="checklist-grid">
           {[
             { done: false, text: "cargo-bloat: analyze all three build modes" },
-            { done: false, text: "Release profile: opt-level=z, lto, codegen-units=1, panic=abort, strip=true" },
-            { done: false, text: "Dependency pruning: remove unused features from all crates" },
-            { done: false, text: "Linker flags: gc-sections, dead_strip, as-needed" },
-            { done: false, text: "Platform paths: XDG on Linux, ~/Library on macOS, MINIMA_HOME override" },
-            { done: false, text: "Config loader: resolve relative paths, read passwords from env vars" },
-            { done: false, text: "Cross-compile: x86_64, aarch64, armv7, riscv64 with musl" },
-            { done: false, text: "CI pipeline: build + strip + size-check + package for all targets" },
-            { done: false, text: "Security audit: cargo-audit, no OpenSSL, key permissions" },
+            {
+              done: false,
+              text: "Release profile: opt-level=z, lto, codegen-units=1, panic=abort, strip=true",
+            },
+            {
+              done: false,
+              text: "Dependency pruning: remove unused features from all crates",
+            },
+            {
+              done: false,
+              text: "Linker flags: gc-sections, dead_strip, as-needed",
+            },
+            {
+              done: false,
+              text: "Platform paths: XDG on Linux, ~/Library on macOS, MINIMA_HOME override",
+            },
+            {
+              done: false,
+              text: "Config loader: resolve relative paths, read passwords from env vars",
+            },
+            {
+              done: false,
+              text: "Cross-compile: x86_64, aarch64, armv7, riscv64 with musl",
+            },
+            {
+              done: false,
+              text: "CI pipeline: build + strip + size-check + package for all targets",
+            },
+            {
+              done: false,
+              text: "Security audit: cargo-audit, no OpenSSL, key permissions",
+            },
             { done: false, text: "Size verification: all modes under 10MB" },
             { done: false, text: "Release checklist: all items checked" },
-            { done: false, text: "Installation script: tested on clean Linux and macOS" },
+            {
+              done: false,
+              text: "Installation script: tested on clean Linux and macOS",
+            },
           ].map((item) => (
             <label key={item.text} className="checklist-item">
               <input type="checkbox" defaultChecked={item.done} readOnly />

@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-type Step = "overview" | "deps" | "identity" | "transport" | "discovery" | "messaging" | "testing";
+type Step =
+  | "overview"
+  | "deps"
+  | "identity"
+  | "transport"
+  | "discovery"
+  | "messaging"
+  | "testing";
 
 const steps: { id: Step; label: string; num: number }[] = [
   { id: "overview", label: "Overview", num: 0 },
@@ -12,11 +19,14 @@ const steps: { id: Step; label: string; num: number }[] = [
   { id: "testing", label: "Integration", num: 6 },
 ];
 
-const stepContent: Record<Step, {
-  title: string;
-  desc: string;
-  sections: { heading: string; body: string; code?: string }[];
-}> = {
+const stepContent: Record<
+  Step,
+  {
+    title: string;
+    desc: string;
+    sections: { heading: string; body: string; code?: string }[];
+  }
+> = {
   overview: {
     title: "Phase 2: libp2p P2P Implementation Plan",
     desc: "Building the 'Privacy Mode' — a Simplex-like architecture with no central server. Direct peer-to-peer messaging using libp2p for transport, discovery, and NAT traversal. Messages never touch a third party.",
@@ -1425,11 +1435,14 @@ export function Phase2P2P() {
   return (
     <section className="phase1-section">
       <div className="phase1-header">
-        <div className="phase1-badge" style={{ background: "#8b5cf6" }}>Phase 2</div>
+        <div className="phase1-badge" style={{ background: "#8b5cf6" }}>
+          Phase 2
+        </div>
         <div>
           <h2>libp2p P2P Implementation</h2>
           <p className="phase1-tagline">
-            The "Privacy Mode" — no server, no metadata, direct peer-to-peer messaging with Simplex-like properties
+            The "Privacy Mode" — no server, no metadata, direct peer-to-peer
+            messaging with Simplex-like properties
           </p>
         </div>
       </div>
@@ -1459,7 +1472,9 @@ export function Phase2P2P() {
               <h4>{section.heading}</h4>
               <p className="phase1-body">{section.body}</p>
               {section.code && (
-                <pre className="code-block"><code>{section.code}</code></pre>
+                <pre className="code-block">
+                  <code>{section.code}</code>
+                </pre>
               )}
             </div>
           ))}
@@ -1470,18 +1485,48 @@ export function Phase2P2P() {
         <h4>Phase 2 Deliverables Checklist</h4>
         <div className="checklist-grid">
           {[
-            { done: false, text: "PeerIdentity: Ed25519 keypair persistence (load/generate/save)" },
-            { done: false, text: "Swarm setup: TCP + Noise + Yamux + Gossipsub" },
-            { done: false, text: "mDNS discovery: auto-find peers on local network" },
-            { done: false, text: "Relay/NAT: bootstrap relay connection for NAT traversal" },
+            {
+              done: false,
+              text: "PeerIdentity: Ed25519 keypair persistence (load/generate/save)",
+            },
+            {
+              done: false,
+              text: "Swarm setup: TCP + Noise + Yamux + Gossipsub",
+            },
+            {
+              done: false,
+              text: "mDNS discovery: auto-find peers on local network",
+            },
+            {
+              done: false,
+              text: "Relay/NAT: bootstrap relay connection for NAT traversal",
+            },
             { done: false, text: "P2PEngine: ChatEngine trait implementation" },
-            { done: false, text: "Gossipsub messaging: topic-per-peer DM routing" },
-            { done: false, text: "Double Ratchet integration: encrypt/decrypt per-peer" },
+            {
+              done: false,
+              text: "Gossipsub messaging: topic-per-peer DM routing",
+            },
+            {
+              done: false,
+              text: "Double Ratchet integration: encrypt/decrypt per-peer",
+            },
             { done: false, text: "PeerDb: local SQLite contact store" },
-            { done: false, text: "Loopback test: two peers discover + exchange messages" },
-            { done: false, text: "Identity persistence test: same PeerId across restarts" },
-            { done: false, text: "Forward secrecy test: ratchet advancement verified" },
-            { done: false, text: "Size verification: build < 6MB with p2p feature only" },
+            {
+              done: false,
+              text: "Loopback test: two peers discover + exchange messages",
+            },
+            {
+              done: false,
+              text: "Identity persistence test: same PeerId across restarts",
+            },
+            {
+              done: false,
+              text: "Forward secrecy test: ratchet advancement verified",
+            },
+            {
+              done: false,
+              text: "Size verification: build < 6MB with p2p feature only",
+            },
           ].map((item) => (
             <label key={item.text} className="checklist-item">
               <input type="checkbox" defaultChecked={item.done} readOnly />

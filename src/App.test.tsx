@@ -7,7 +7,9 @@ describe("App", () => {
     render(<App />);
 
     expect(screen.getByRole("heading", { name: "Minima" })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: "Architecture" })).toHaveClass("active");
+    expect(screen.getByRole("tab", { name: "Architecture" })).toHaveClass(
+      "active",
+    );
     expect(screen.getByText("CLI Layer")).toBeInTheDocument();
   });
 
@@ -24,7 +26,11 @@ describe("App", () => {
 
     fireEvent.click(screen.getByRole("tab", { name: "Roadmap" }));
 
-    expect(screen.getByRole("heading", { name: "Roadmap" })).toBeInTheDocument();
-    expect(screen.getByText(/Three phases from single-binary prototype/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Roadmap" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Three phases from single-binary prototype/i),
+    ).toBeInTheDocument();
   });
 });

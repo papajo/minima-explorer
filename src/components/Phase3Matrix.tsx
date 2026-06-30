@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-type Step = "overview" | "deps" | "sync" | "rooms" | "messaging" | "encryption" | "testing";
+type Step =
+  | "overview"
+  | "deps"
+  | "sync"
+  | "rooms"
+  | "messaging"
+  | "encryption"
+  | "testing";
 
 const steps: { id: Step; label: string; num: number }[] = [
   { id: "overview", label: "Overview", num: 0 },
@@ -12,11 +19,14 @@ const steps: { id: Step; label: string; num: number }[] = [
   { id: "testing", label: "Integration", num: 6 },
 ];
 
-const stepContent: Record<Step, {
-  title: string;
-  desc: string;
-  sections: { heading: string; body: string; code?: string }[];
-}> = {
+const stepContent: Record<
+  Step,
+  {
+    title: string;
+    desc: string;
+    sections: { heading: string; body: string; code?: string }[];
+  }
+> = {
   overview: {
     title: "Phase 3: Matrix-Lite Implementation Plan",
     desc: "Building the 'Community Mode' — federated chat with group rooms, server-side history, and bridges to other platforms. Uses the Matrix protocol with the Rust SDK, stripped of all UI components.",
@@ -1367,11 +1377,14 @@ export function Phase3Matrix() {
   return (
     <section className="phase1-section">
       <div className="phase1-header">
-        <div className="phase1-badge" style={{ background: "#10b981" }}>Phase 3</div>
+        <div className="phase1-badge" style={{ background: "#10b981" }}>
+          Phase 3
+        </div>
         <div>
           <h2>Matrix-Lite Implementation</h2>
           <p className="phase1-tagline">
-            The "Community Mode" — federated rooms, server-side history, E2EE via Olm/Megolm, bridges to other platforms
+            The "Community Mode" — federated rooms, server-side history, E2EE
+            via Olm/Megolm, bridges to other platforms
           </p>
         </div>
       </div>
@@ -1401,7 +1414,9 @@ export function Phase3Matrix() {
               <h4>{section.heading}</h4>
               <p className="phase1-body">{section.body}</p>
               {section.code && (
-                <pre className="code-block"><code>{section.code}</code></pre>
+                <pre className="code-block">
+                  <code>{section.code}</code>
+                </pre>
               )}
             </div>
           ))}
@@ -1412,18 +1427,54 @@ export function Phase3Matrix() {
         <h4>Phase 3 Deliverables Checklist</h4>
         <div className="checklist-grid">
           {[
-            { done: false, text: "MatrixConfig: homeserver, user_id, password, state_dir validation" },
-            { done: false, text: "Client setup: login, E2EE enable, initial sync" },
-            { done: false, text: "SyncEngine: background /sync loop with message forwarding" },
-            { done: false, text: "RoomManager: list, join, leave, encryption status" },
-            { done: false, text: "MatrixEngine: ChatEngine trait implementation" },
-            { done: false, text: "Incremental sync: sled-persisted sync token across restarts" },
-            { done: false, text: "E2EE: Olm/Megolm transparent encryption for encrypted rooms" },
-            { done: false, text: "VerificationManager: SAS verification for device trust" },
-            { done: false, text: "Docker test server: local Synapse with test users" },
-            { done: false, text: "Integration test: login, join, send, receive (encrypted room)" },
-            { done: false, text: "Contacts test: list_rooms shows encryption status" },
-            { done: false, text: "Size verification: build < 7MB with matrix feature only" },
+            {
+              done: false,
+              text: "MatrixConfig: homeserver, user_id, password, state_dir validation",
+            },
+            {
+              done: false,
+              text: "Client setup: login, E2EE enable, initial sync",
+            },
+            {
+              done: false,
+              text: "SyncEngine: background /sync loop with message forwarding",
+            },
+            {
+              done: false,
+              text: "RoomManager: list, join, leave, encryption status",
+            },
+            {
+              done: false,
+              text: "MatrixEngine: ChatEngine trait implementation",
+            },
+            {
+              done: false,
+              text: "Incremental sync: sled-persisted sync token across restarts",
+            },
+            {
+              done: false,
+              text: "E2EE: Olm/Megolm transparent encryption for encrypted rooms",
+            },
+            {
+              done: false,
+              text: "VerificationManager: SAS verification for device trust",
+            },
+            {
+              done: false,
+              text: "Docker test server: local Synapse with test users",
+            },
+            {
+              done: false,
+              text: "Integration test: login, join, send, receive (encrypted room)",
+            },
+            {
+              done: false,
+              text: "Contacts test: list_rooms shows encryption status",
+            },
+            {
+              done: false,
+              text: "Size verification: build < 7MB with matrix feature only",
+            },
           ].map((item) => (
             <label key={item.text} className="checklist-item">
               <input type="checkbox" defaultChecked={item.done} readOnly />

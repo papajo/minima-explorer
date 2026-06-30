@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-type Step = "overview" | "deps" | "connection" | "omemo" | "messaging" | "testing";
+type Step =
+  "overview" | "deps" | "connection" | "omemo" | "messaging" | "testing";
 
 const steps: { id: Step; label: string; num: number }[] = [
   { id: "overview", label: "Overview", num: 0 },
@@ -11,11 +12,14 @@ const steps: { id: Step; label: string; num: number }[] = [
   { id: "testing", label: "Integration", num: 5 },
 ];
 
-const stepContent: Record<Step, {
-  title: string;
-  desc: string;
-  sections: { heading: string; body: string; code?: string }[];
-}> = {
+const stepContent: Record<
+  Step,
+  {
+    title: string;
+    desc: string;
+    sections: { heading: string; body: string; code?: string }[];
+  }
+> = {
   overview: {
     title: "Phase 1: XMPP + OMEMO Implementation Plan",
     desc: "Building the first protocol driver — XMPP with OMEMO end-to-end encryption. This is the 'stability mode': standardized protocol, mature server ecosystem, well-audited encryption.",
@@ -1250,7 +1254,8 @@ export function Phase1Xmpp() {
         <div>
           <h2>XMPP + OMEMO Implementation</h2>
           <p className="phase1-tagline">
-            The "Stability Mode" — standardized protocol, audited encryption, mature server ecosystem
+            The "Stability Mode" — standardized protocol, audited encryption,
+            mature server ecosystem
           </p>
         </div>
       </div>
@@ -1280,7 +1285,9 @@ export function Phase1Xmpp() {
               <h4>{section.heading}</h4>
               <p className="phase1-body">{section.body}</p>
               {section.code && (
-                <pre className="code-block"><code>{section.code}</code></pre>
+                <pre className="code-block">
+                  <code>{section.code}</code>
+                </pre>
               )}
             </div>
           ))}
@@ -1291,14 +1298,35 @@ export function Phase1Xmpp() {
         <h4>Phase 1 Deliverables Checklist</h4>
         <div className="checklist-grid">
           {[
-            { done: false, text: "XmppConnection: TLS + SASL + stream binding" },
+            {
+              done: false,
+              text: "XmppConnection: TLS + SASL + stream binding",
+            },
             { done: false, text: "OmemoKeyStore: SQLite key persistence" },
-            { done: false, text: "OmemoSession: X3DH + Double Ratchet integration" },
-            { done: false, text: "XmppEngine: ChatEngine trait implementation" },
-            { done: false, text: "StanzaBuilder: OMEMO XML message construction" },
-            { done: false, text: "Loopback test: Alice sends, Bob receives (encrypted)" },
-            { done: false, text: "Docker test server: Prosody with OMEMO support" },
-            { done: false, text: "Size verification: build < 5MB with xmpp feature only" },
+            {
+              done: false,
+              text: "OmemoSession: X3DH + Double Ratchet integration",
+            },
+            {
+              done: false,
+              text: "XmppEngine: ChatEngine trait implementation",
+            },
+            {
+              done: false,
+              text: "StanzaBuilder: OMEMO XML message construction",
+            },
+            {
+              done: false,
+              text: "Loopback test: Alice sends, Bob receives (encrypted)",
+            },
+            {
+              done: false,
+              text: "Docker test server: Prosody with OMEMO support",
+            },
+            {
+              done: false,
+              text: "Size verification: build < 5MB with xmpp feature only",
+            },
           ].map((item) => (
             <label key={item.text} className="checklist-item">
               <input type="checkbox" defaultChecked={item.done} readOnly />

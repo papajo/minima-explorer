@@ -10,7 +10,16 @@ import { Phase2P2P } from "./components/Phase2P2P";
 import { Phase3Matrix } from "./components/Phase3Matrix";
 import { Phase4Optimize } from "./components/Phase4Optimize";
 
-type Tab = "architecture" | "scaffold" | "modes" | "roadmap" | "size" | "phase1" | "phase2" | "phase3" | "phase4";
+type Tab =
+  | "architecture"
+  | "scaffold"
+  | "modes"
+  | "roadmap"
+  | "size"
+  | "phase1"
+  | "phase2"
+  | "phase3"
+  | "phase4";
 
 const tabs: { id: Tab; label: string }[] = [
   { id: "architecture", label: "Architecture" },
@@ -39,12 +48,20 @@ export default function App() {
             <div className="logo">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                 <rect width="28" height="28" rx="6" fill="#3b82f6" />
-                <path d="M8 20L14 8L20 20H8Z" fill="#0a0a0a" stroke="#0a0a0a" strokeWidth="1.5" strokeLinejoin="round" />
+                <path
+                  d="M8 20L14 8L20 20H8Z"
+                  fill="#0a0a0a"
+                  stroke="#0a0a0a"
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                />
                 <circle cx="14" cy="16" r="2" fill="#3b82f6" />
               </svg>
               <div>
                 <h1>Minima</h1>
-                <span className="tagline">High-assurance privacy for constrained environments</span>
+                <span className="tagline">
+                  High-assurance privacy for constrained environments
+                </span>
               </div>
             </div>
             <div className="badges">
@@ -78,12 +95,20 @@ export default function App() {
 
       <main className="main">
         {activeTab === "architecture" && (
-          <section role="tabpanel" id={getPanelId("architecture")} aria-labelledby={getTabId("architecture")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("architecture")}
+            aria-labelledby={getTabId("architecture")}
+          >
             <ArchDiagram />
           </section>
         )}
         {activeTab === "scaffold" && (
-          <section role="tabpanel" id={getPanelId("scaffold")} aria-labelledby={getTabId("scaffold")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("scaffold")}
+            aria-labelledby={getTabId("scaffold")}
+          >
             <div className="scaffold-layout">
               <FileTree onSelect={setSelectedFile} selected={selectedFile} />
               <CodePreview filePath={selectedFile} />
@@ -91,37 +116,65 @@ export default function App() {
           </section>
         )}
         {activeTab === "modes" && (
-          <section role="tabpanel" id={getPanelId("modes")} aria-labelledby={getTabId("modes")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("modes")}
+            aria-labelledby={getTabId("modes")}
+          >
             <ModeExplorer />
           </section>
         )}
         {activeTab === "roadmap" && (
-          <section role="tabpanel" id={getPanelId("roadmap")} aria-labelledby={getTabId("roadmap")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("roadmap")}
+            aria-labelledby={getTabId("roadmap")}
+          >
             <Roadmap />
           </section>
         )}
         {activeTab === "size" && (
-          <section role="tabpanel" id={getPanelId("size")} aria-labelledby={getTabId("size")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("size")}
+            aria-labelledby={getTabId("size")}
+          >
             <SizeBudget />
           </section>
         )}
         {activeTab === "phase1" && (
-          <section role="tabpanel" id={getPanelId("phase1")} aria-labelledby={getTabId("phase1")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("phase1")}
+            aria-labelledby={getTabId("phase1")}
+          >
             <Phase1Xmpp />
           </section>
         )}
         {activeTab === "phase2" && (
-          <section role="tabpanel" id={getPanelId("phase2")} aria-labelledby={getTabId("phase2")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("phase2")}
+            aria-labelledby={getTabId("phase2")}
+          >
             <Phase2P2P />
           </section>
         )}
         {activeTab === "phase3" && (
-          <section role="tabpanel" id={getPanelId("phase3")} aria-labelledby={getTabId("phase3")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("phase3")}
+            aria-labelledby={getTabId("phase3")}
+          >
             <Phase3Matrix />
           </section>
         )}
         {activeTab === "phase4" && (
-          <section role="tabpanel" id={getPanelId("phase4")} aria-labelledby={getTabId("phase4")}>
+          <section
+            role="tabpanel"
+            id={getPanelId("phase4")}
+            aria-labelledby={getTabId("phase4")}
+          >
             <Phase4Optimize />
           </section>
         )}

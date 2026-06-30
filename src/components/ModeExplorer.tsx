@@ -2,20 +2,23 @@ import { useState } from "react";
 
 type Mode = "xmpp" | "p2p" | "matrix";
 
-const modes: Record<Mode, {
-  name: string;
-  tagline: string;
-  icon: string;
-  color: string;
-  protocol: string;
-  encryption: string;
-  transport: string;
-  deps: string[];
-  binarySize: string;
-  useCase: string;
-  tradeoffs: { pros: string[]; cons: string[] };
-  snippet: string;
-}> = {
+const modes: Record<
+  Mode,
+  {
+    name: string;
+    tagline: string;
+    icon: string;
+    color: string;
+    protocol: string;
+    encryption: string;
+    transport: string;
+    deps: string[];
+    binarySize: string;
+    useCase: string;
+    tradeoffs: { pros: string[]; cons: string[] };
+    snippet: string;
+  }
+> = {
   xmpp: {
     name: "XMPP + OMEMO",
     tagline: "The Stability Mode",
@@ -24,9 +27,15 @@ const modes: Record<Mode, {
     protocol: "XMPP (RFC 6120/6121)",
     encryption: "OMEMO (X3DH + Double Ratchet via libsignal)",
     transport: "TCP/TLS 1.3 to XMPP server",
-    deps: ["xmpp-rs (xml parser)", "libsignal-protocol-rs", "rusqlite (key store)", "rustls"],
+    deps: [
+      "xmpp-rs (xml parser)",
+      "libsignal-protocol-rs",
+      "rusqlite (key store)",
+      "rustls",
+    ],
     binarySize: "~4.2 MB estimated",
-    useCase: "Reliable, standards-based chat. Works with any XMPP server (ejabberd, Prosody). Best for teams already using XMPP infrastructure.",
+    useCase:
+      "Reliable, standards-based chat. Works with any XMPP server (ejabberd, Prosody). Best for teams already using XMPP infrastructure.",
     tradeoffs: {
       pros: [
         "Server ecosystem is mature and battle-tested",
@@ -88,9 +97,15 @@ impl ChatEngine for XmppEngine {
     protocol: "libp2p (gossipsub + noise + identify)",
     encryption: "Noise Protocol (XX handshake) + Double Ratchet on top",
     transport: "Direct TCP/WebSocket between peers, relay for NAT traversal",
-    deps: ["libp2p (gossipsub, noise, identify, relay, mdns)", "x25519-dalek", "aes-gcm", "rusqlite"],
+    deps: [
+      "libp2p (gossipsub, noise, identify, relay, mdns)",
+      "x25519-dalek",
+      "aes-gcm",
+      "rusqlite",
+    ],
     binarySize: "~5.8 MB estimated",
-    useCase: "Simplex-like metadata resistance. No server holds your contacts or message history. Direct device-to-device communication.",
+    useCase:
+      "Simplex-like metadata resistance. No server holds your contacts or message history. Direct device-to-device communication.",
     tradeoffs: {
       pros: [
         "No central server — true metadata resistance",
@@ -162,9 +177,15 @@ impl ChatEngine for P2PEngine {
     protocol: "Matrix Client-Server API v1.x",
     encryption: "Megolm (group ratchet) + Olm (1:1 X3DH/DR)",
     transport: "HTTPS to Matrix homeserver (sync via /sync endpoint)",
-    deps: ["matrix-sdk (headless, no-ui feature)", "vodozemac (olm/megolm)", "reqwest (rustls-tls)", "rusqlite"],
+    deps: [
+      "matrix-sdk (headless, no-ui feature)",
+      "vodozemac (olm/megolm)",
+      "reqwest (rustls-tls)",
+      "rusqlite",
+    ],
     binarySize: "~6.1 MB estimated",
-    useCase: "Join federated communities and large rooms. Best for users who need group persistence, bridging to other platforms, and server-side history.",
+    useCase:
+      "Join federated communities and large rooms. Best for users who need group persistence, bridging to other platforms, and server-side history.",
     tradeoffs: {
       pros: [
         "Federation: join any Matrix homeserver",
@@ -262,7 +283,10 @@ export function ModeExplorer() {
             style={{ "--mode-color": modes[key].color } as React.CSSProperties}
             onClick={() => setActive(key)}
           >
-            <span className="mode-icon" style={{ background: modes[key].color }}>
+            <span
+              className="mode-icon"
+              style={{ background: modes[key].color }}
+            >
               {modes[key].icon}
             </span>
             <span className="mode-label">{modes[key].name}</span>
@@ -300,7 +324,9 @@ export function ModeExplorer() {
             <span className="spec-label">Dependencies</span>
             <div className="dep-list">
               {m.deps.map((d) => (
-                <span key={d} className="dep-chip">{d}</span>
+                <span key={d} className="dep-chip">
+                  {d}
+                </span>
               ))}
             </div>
           </div>

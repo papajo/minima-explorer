@@ -64,6 +64,8 @@ npm run preview
 - `npm run preview` — preview the production build locally
 - `npm run typecheck` — run TypeScript project checks
 - `npm run lint` — run ESLint across the repo
+- `npm run format` — format the repo with Prettier
+- `npm run format:check` — verify formatting without changing files
 - `npm run test` — start Vitest in watch mode
 - `npm run test:run` — run the test suite once
 
@@ -93,6 +95,7 @@ Before opening a PR, run:
 
 ```bash
 npm run lint
+npm run format:check
 npm run typecheck
 npm run test:run
 npm run build
@@ -119,6 +122,6 @@ This repository is licensed under the [Apache License 2.0](./LICENSE).
 ## Next Improvements
 
 - Add screenshots or a short walkthrough GIF
-- Move large static content blocks into dedicated data modules
+- Continue moving large static content blocks into dedicated data modules
 - Expand test coverage beyond the app shell and tab navigation
-- Add formatting automation to complement linting
+- Add a live preview deployment target (for example, GitHub Pages or Vercel)

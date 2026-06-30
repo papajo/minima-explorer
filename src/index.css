@@ -1,6 +1,12 @@
 :root {
   color-scheme: dark;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   line-height: 1.5;
   --blue: #3b82f6;
   --purple: #8b5cf6;
@@ -20,9 +26,14 @@
   --radius-lg: 12px;
 }
 
-* { box-sizing: border-box; margin: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 
-html, body, #root {
+html,
+body,
+#root {
   min-height: 100vh;
   background: var(--surface);
   color: var(--text);
@@ -95,9 +106,21 @@ html, body, #root {
   font-weight: 600;
 }
 
-.badge-rust { color: #f97316; border-color: rgba(249, 115, 22, 0.3); background: rgba(249, 115, 22, 0.08); }
-.badge-size { color: var(--green); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08); }
-.badge-e2ee { color: var(--blue); border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.08); }
+.badge-rust {
+  color: #f97316;
+  border-color: rgba(249, 115, 22, 0.3);
+  background: rgba(249, 115, 22, 0.08);
+}
+.badge-size {
+  color: var(--green);
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.08);
+}
+.badge-e2ee {
+  color: var(--blue);
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.08);
+}
 
 /* ── Tabs ── */
 
@@ -116,11 +139,15 @@ html, body, #root {
   padding: 10px 16px;
   cursor: pointer;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
   font-family: inherit;
 }
 
-.tab:hover { color: var(--text); }
+.tab:hover {
+  color: var(--text);
+}
 .tab.active {
   color: var(--text);
   border-bottom-color: var(--blue);
@@ -185,7 +212,9 @@ html, body, #root {
   text-align: left;
   font-family: inherit;
   color: inherit;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
 
 .arch-layer:hover {
@@ -261,8 +290,14 @@ html, body, #root {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .layer-details ul {
@@ -372,7 +407,9 @@ html, body, #root {
   font-size: 0.78rem;
   color: var(--text-muted);
   text-align: left;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   font-family: inherit;
 }
 
@@ -432,7 +469,9 @@ html, body, #root {
   min-height: 400px;
 }
 
-.empty-icon { margin-bottom: 16px; }
+.empty-icon {
+  margin-bottom: 16px;
+}
 .code-preview.empty p {
   color: var(--text-subtle);
   font-size: 0.9rem;
@@ -498,7 +537,9 @@ html, body, #root {
   cursor: pointer;
   color: inherit;
   font-family: inherit;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   flex: 1;
 }
 
@@ -1226,14 +1267,37 @@ html, body, #root {
 /* ── Responsive ── */
 
 @media (max-width: 768px) {
-  .logo-section { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .badges { align-self: flex-start; }
-  .tabs { overflow-x: auto; }
-  .scaffold-layout { grid-template-columns: 1fr; }
-  .file-tree { position: static; max-height: 300px; }
-  .mode-switcher { flex-direction: column; }
-  .mode-grid { grid-template-columns: 1fr; }
-  .tradeoffs { grid-template-columns: 1fr; }
-  .size-overview { grid-template-columns: 1fr; }
-  .bar-row { grid-template-columns: 140px 1fr 50px; }
+  .logo-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .badges {
+    align-self: flex-start;
+  }
+  .tabs {
+    overflow-x: auto;
+  }
+  .scaffold-layout {
+    grid-template-columns: 1fr;
+  }
+  .file-tree {
+    position: static;
+    max-height: 300px;
+  }
+  .mode-switcher {
+    flex-direction: column;
+  }
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+  .tradeoffs {
+    grid-template-columns: 1fr;
+  }
+  .size-overview {
+    grid-template-columns: 1fr;
+  }
+  .bar-row {
+    grid-template-columns: 140px 1fr 50px;
+  }
 }

@@ -2,11 +2,14 @@ import { useState } from "react";
 
 type Mode = "xmpp-only" | "p2p-only" | "matrix-only" | "all";
 
-const budgets: Record<Mode, {
-  label: string;
-  total: number;
-  items: { name: string; size: number; color: string }[];
-}> = {
+const budgets: Record<
+  Mode,
+  {
+    label: string;
+    total: number;
+    items: { name: string; size: number; color: string }[];
+  }
+> = {
   "xmpp-only": {
     label: "XMPP-only build",
     total: 4.2,
@@ -47,7 +50,7 @@ const budgets: Record<Mode, {
       { name: "serde + ruma types", size: 0.2, color: "#f97316" },
     ],
   },
-  "all": {
+  all: {
     label: "All modes (unified binary)",
     total: 9.4,
     items: [
@@ -63,10 +66,13 @@ const budgets: Record<Mode, {
 };
 
 const buildCommands: Record<Mode, string> = {
-  "xmpp-only": "cargo build --release --no-default-features --features xmpp --target x86_64-unknown-linux-musl",
-  "p2p-only": "cargo build --release --no-default-features --features p2p --target x86_64-unknown-linux-musl",
-  "matrix-only": "cargo build --release --no-default-features --features matrix --target x86_64-unknown-linux-musl",
-  "all": "cargo build --release --features xmpp,p2p,matrix --target x86_64-unknown-linux-musl",
+  "xmpp-only":
+    "cargo build --release --no-default-features --features xmpp --target x86_64-unknown-linux-musl",
+  "p2p-only":
+    "cargo build --release --no-default-features --features p2p --target x86_64-unknown-linux-musl",
+  "matrix-only":
+    "cargo build --release --no-default-features --features matrix --target x86_64-unknown-linux-musl",
+  all: "cargo build --release --features xmpp,p2p,matrix --target x86_64-unknown-linux-musl",
 };
 
 export function SizeBudget() {
@@ -130,7 +136,9 @@ export function SizeBudget() {
                 style={{ width: `${((maxSize - b.total) / maxSize) * 100}%` }}
               />
             </div>
-            <span className="bar-value">{(maxSize - b.total).toFixed(1)}MB</span>
+            <span className="bar-value">
+              {(maxSize - b.total).toFixed(1)}MB
+            </span>
           </div>
         </div>
       </div>
@@ -143,9 +151,17 @@ export function SizeBudget() {
       <div className="size-tips">
         <h4>Size Optimization Techniques</h4>
         <ul>
-          <li><code>Cargo.toml</code> — <code>[profile.release]</code> with <code>opt-level = "z"</code> (size) + <code>lto = true</code> + <code>codegen-units = 1</code></li>
-          <li><code>strip = true</code> — Remove debug symbols and DWARF info</li>
-          <li><code>panic = "abort"</code> — No unwinding, saves ~200KB</li>
+          <li>
+            <code>Cargo.toml</code> — <code>[profile.release]</code> with{" "}
+            <code>opt-level = "z"</code> (size) + <code>lto = true</code> +{" "}
+            <code>codegen-units = 1</code>
+          </li>
+          <li>
+            <code>strip = true</code> — Remove debug symbols and DWARF info
+          </li>
+          <li>
+            <code>panic = "abort"</code> — No unwinding, saves ~200KB
+          </li>
           <li>musl static linking — Single binary, no glibc dependency</li>
           <li>Feature gates — Only compile the protocol drivers you need</li>
           <li>Avoid OpenSSL — rustls + ring is ~300KB vs ~2MB for OpenSSL</li>
