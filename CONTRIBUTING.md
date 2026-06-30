@@ -40,6 +40,10 @@ npm run build
 - Use clear commit messages (for example: `docs: ...`, `feat: ...`, `fix: ...`, `chore: ...`).
 - Include a concise summary of what changed and how it was validated.
 
+## Deployment
+
+Pushes to `main` trigger the GitHub Pages deployment workflow.
+
 ## Reporting issues
 
 Please use the issue templates when reporting bugs or requesting features.

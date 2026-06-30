@@ -103,6 +103,18 @@ npm run build
 
 A GitHub Actions workflow is included to run the same checks in CI.
 
+## Deployment
+
+This repo includes a GitHub Pages workflow that deploys the app automatically from `main`.
+
+Expected live URL:
+
+```text
+https://papajo.github.io/minima-explorer/
+```
+
+After the workflow runs, enable **Settings → Pages → GitHub Actions** in the GitHub repository if Pages is not already configured.
+
 ## Contributing
 
 - See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for local setup and contribution guidance.
@@ -124,4 +136,4 @@ This repository is licensed under the [Apache License 2.0](./LICENSE).
 - Add screenshots or a short walkthrough GIF
 - Continue moving large static content blocks into dedicated data modules
 - Expand test coverage beyond the app shell and tab navigation
-- Add a live preview deployment target (for example, GitHub Pages or Vercel)
+- Add a custom domain or alternate hosting target if the project needs a friendlier public URL
